@@ -160,7 +160,7 @@ class MainActivity : AppCompatActivity() {
             // Get the current text from the TextView
             val currentText = resultDisplay.text.toString()
 
-            // Append "8" to the current text
+            
             val newText = currentText + "9"
 
             // Update the TextView with the new text
@@ -202,7 +202,7 @@ class MainActivity : AppCompatActivity() {
             // Get the current text from the TextView
             val currentText = resultDisplay.text.toString()
 
-            // Append "8" to the current text
+           
             val newText = currentText + "5"
 
             // Update the TextView with the new text
@@ -269,7 +269,7 @@ class MainActivity : AppCompatActivity() {
             // Get the current text from the TextView
             val currentText = resultDisplay.text.toString()
 
-            // Append "8" to the current text
+            /
             val newText = currentText + "3"
 
             // Update the TextView with the new text
