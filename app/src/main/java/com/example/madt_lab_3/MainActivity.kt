@@ -4,14 +4,21 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
-
+import kotlin.math.sqrt
 
 
 class MainActivity : AppCompatActivity() {
     private var memoryValue = 0.0
     private var currentInput = ""
     private var currentResult = 0.0
+
+    fun getMemoryValue(): Double {
+        return memoryValue
+    }
+
+    internal fun updateMemoryValue(newValue: Double) {
+        memoryValue = newValue
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,15 +29,19 @@ class MainActivity : AppCompatActivity() {
 
         val mcButton = findViewById<Button>(R.id.button0_1)
 
+
         // Set a click listener for the "MC" button
         mcButton.setOnClickListener {
             memoryValue = 0.0
+            resultDisplay.text = memoryValue.toString()
         }
 
 
         val mrButton = findViewById<Button>(R.id.button0_2)
 
         mrButton.setOnClickListener {
+
+            memoryValue = 10.0
             resultDisplay.text = memoryValue.toString()
 
         }
@@ -39,10 +50,9 @@ class MainActivity : AppCompatActivity() {
 
         msButton.setOnClickListener {
             val currentText = resultDisplay.text.toString()
-            val currentValue = currentText.toDoubleOrNull()
-            if (currentValue != null) {
-                memoryValue = currentValue
-            }
+            val currentValue = currentText.toDoubleOrNull() ?: return@setOnClickListener // Return if parsing fails
+
+            memoryValue = currentValue // Update memoryValue with the parsed value
         }
 
         val mplusButton = findViewById<Button>(R.id.button0_4)
@@ -116,7 +126,7 @@ class MainActivity : AppCompatActivity() {
             if (currentInput.isNotEmpty()) {
                 val inputNumber = currentInput.toDouble()
                 if (inputNumber >= 0.0) {
-                    val sqrtResult = Math.sqrt(inputNumber)
+                    val sqrtResult = sqrt(inputNumber)
                     resultDisplay.text = sqrtResult.toString()
                     currentInput = sqrtResult.toString() // You can now reassign it
                 } else {
@@ -133,7 +143,7 @@ class MainActivity : AppCompatActivity() {
             // Get the current text from the TextView
             val currentText = resultDisplay.text.toString()
 
-            // Append "8" to the current text
+
             val newText = currentText + "7"
 
             // Update the TextView with the new text
